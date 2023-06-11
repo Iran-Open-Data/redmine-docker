@@ -1,0 +1,32 @@
+version: "3"
+
+volumes:
+  postgres_data:
+  redmine_data:
+
+services:
+
+  redmine:
+    container_name: redmine
+    build:
+      context: nginx/
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    depends_on:
+      postgres:
+    ports:
+      - "3000:${REDMINE_PORT}"
+    volumes:
+      - redmine_data:/usr/src/redmine/files
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:latest
+    container_name: redmine_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    environment:
+      - "POSTGRES_PASSWORD=${REDMINE_DB_PASSWORD}"
+      - "POSTGRES_DB=${REDMINE_DB_DATABASE}"
