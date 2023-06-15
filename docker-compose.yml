@@ -9,12 +9,12 @@ services:
   redmine:
     container_name: redmine
     build:
-      context: nginx/
+      context: ./
       dockerfile: Dockerfile
     env_file:
       - .env
     depends_on:
-      postgres:
+      - postgres
     ports:
       - "3000:${REDMINE_PORT}"
     volumes:
