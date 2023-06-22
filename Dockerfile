@@ -1,4 +1,4 @@
-FROM docker.arvancloud.ir/redmine:latest
+FROM docker.arvancloud.ir/redmine:5.0
 
 # Add theme
 RUN cd public/themes/ && \
