@@ -6,7 +6,11 @@ RUN cd public/themes/ && \
 
 # Add mermaid macro
 RUN cd plugins && \
-  git clone -b mermaid10 https://github.com/taikii/redmine_mermaid_macro.git
+  git clone https://github.com/redmica/redmica_ui_extension.git
+
+# Add sidebar toggle
+RUN cd plugins && \
+  git clone https://github.com/nanego/redmine_hide_sidebar.git
 
 # # Install dependencies
 # RUN apt-get update && \
