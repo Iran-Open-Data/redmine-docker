@@ -16,7 +16,7 @@ services:
     depends_on:
       - postgres
     ports:
-      - "3000:${REDMINE_PORT}"
+      - "${REDMINE_PORT_HOST}:${REDMINE_PORT}"
     volumes:
       - redmine_data:/usr/src/redmine/files
     restart: unless-stopped
